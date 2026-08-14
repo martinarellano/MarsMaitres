@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MarsMaitre · Consola admin</title>
+  <meta name="description" content="Panel administrativo de MarsMaitre para restaurantes, suscripciones y agentes de voz AI.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">M</span><div><strong>MarsMaitre</strong><small>Consola admin</small></div></div>
+    <nav>
+      <button class="nav active" data-view="overview">⌂ <span>Resumen</span></button>
+      <button class="nav" data-view="restaurants">▦ <span>Restaurantes</span></button>
+      <button class="nav" data-view="subscriptions">◈ <span>Suscripciones</span></button>
+      <button class="nav" data-view="calls">☎ <span>Llamadas AI</span></button>
+      <button class="nav" data-view="reports">▤ <span>Reportes</span></button>
+    </nav>
+    <div class="sidebar-foot"><span class="online"></span> Sistema operativo<br><small>Administrador global</small></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><p class="eyebrow">LUNES · 10 AGO 2026</p><h1 id="page-title">Resumen</h1></div><div class="account"><span class="avatar">MA</span><div><strong id="account-name">Martín Arellano</strong><small id="account-role">Administrador</small></div><button class="ghost" id="account-menu" type="button">⌄</button></div></header>
+    <div id="app" class="view"></div>
+  </main>
+  <div id="login-screen" class="login-screen hidden"><div class="login-card"><div class="brand login-brand"><span class="brand-mark">M</span><div><strong>MarsMaitre</strong><small>Acceso administrativo</small></div></div><h2>Inicia sesión</h2><p>Conecta el panel con los datos de MarsMaitre.</p><form id="login-form"><label>Correo<input id="login-email" type="email" value="maartiinaaree.96@gmail.com" required></label><label>Contraseña<input id="login-password" type="password" required></label><button class="button" type="submit">Ingresar</button></form><small class="login-note">En producción esta cuenta se gestionará desde el servidor y no se guardarán contraseñas en la app.</small></div></div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
