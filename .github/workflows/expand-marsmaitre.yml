@@ -1,0 +1,34 @@
+name: Expandir paquete MarsMaitre
+
+on:
+  push:
+    paths:
+      - 'marsmaitre-deploy.zip'
+      - '.github/workflows/expand-marsmaitre.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  expand:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Expandir paquete
+        run: |
+          unzip -o marsmaitre-deploy.zip -d .marsmaitre_tmp
+          cp -R .marsmaitre_tmp/marsmaitre-backend .
+          cp -R .marsmaitre_tmp/marsmaitre-web .
+          cp .marsmaitre_tmp/render.yaml .marsmaitre_tmp/DEPLOYMENT_CHECKLIST.md .marsmaitre_tmp/.gitignore .
+          rm -rf .marsmaitre_tmp marsmaitre-deploy.zip
+
+      - name: Guardar código expandido
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Expandir código de despliegue de MarsMaitre' || exit 0
+          git push
+
